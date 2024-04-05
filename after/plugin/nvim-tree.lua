@@ -29,6 +29,7 @@ end
     -- custom mappings
     vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
     vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+    vim.keymap.set('n', '<leader>r', api.tree.focus,                   opts('Focus'))
     -- Keybind to switch focus between the tree and the file
 
 

@@ -55,3 +55,7 @@ vim.keymap.set("n", "<C-S-c>", ":ToggleCopilot<CR>")
 
 -- write
 vim.keymap.set("n", "<C-s>", ":w<CR>")
+
+
+vim.keymap.set("n","<S-Tab>",":bprev<CR>")
+

@@ -16,6 +16,11 @@ return require('packer').startup(function(use)
   -- use 'navarasu/onedark.nvim'
 
   -- use 'nvim-tree/nvim-web-devicons'
+  use 'ThePrimeagen/vim-be-good'
+
+  use 'junegunn/goyo.vim'
+
+  use 'junegunn/limelight.vim'
 
   use({
       -- "tiagovla/tokyodark.nvim",
@@ -34,6 +39,8 @@ use {
   },
 }
 
+
+use 'lervag/vimtex'
 -- use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
 -- use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 -- use 'romgrk/barbar.nvim'

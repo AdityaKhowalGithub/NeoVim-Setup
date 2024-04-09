@@ -12,10 +12,52 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-    
+
+use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  require("toggleterm").setup()
+end}
+
+  -- use {
+  -- 'rmagatti/auto-session',
+  -- config = function()
+    -- require("auto-session").setup {
+      -- log_level = "error",
+      -- auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+    -- }
+  -- end
+-- }
+
+use {
+    'rmagatti/auto-session',
+    config = function()
+      local auto_session = require("auto-session")
+      auto_session.setup({
+        auto_restore_enabled = false, -- This disables automatic session restoration
+        auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" }, -- Suppressed directories
+        log_level = "error", -- Log level configuration
+      })
+
+      local keymap = vim.keymap
+      keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
+      keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+    end
+  }
   -- use 'navarasu/onedark.nvim'
 
   -- use 'nvim-tree/nvim-web-devicons'
+  use 'ThePrimeagen/vim-be-good'
+
+  use 'junegunn/goyo.vim'
+
+  use 'junegunn/limelight.vim'
+
+use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+}
 
   use({
       -- "tiagovla/tokyodark.nvim",
@@ -34,6 +76,54 @@ use {
   },
 }
 
+-- use {
+    -- 'goolord/alpha-nvim',
+    -- requires = {
+        -- 'nvim-tree/nvim-web-devicons',
+        -- 'nvim-lua/plenary.nvim'
+    -- },
+    -- config = function ()
+        -- require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        -- dashboard.section.buttons.val = {
+      -- dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
+      -- dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+      -- dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+      -- dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+      -- dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+      -- dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
+  -- }
+    -- end
+-- }
+--
+use {
+    'goolord/alpha-nvim',
+    requires = {
+        'nvim-tree/nvim-web-devicons',
+        'nvim-lua/plenary.nvim'
+    },
+    config = function ()
+        -- Initialize the dashboard
+        local alpha = require'alpha'
+        local dashboard = require'alpha.themes.dashboard'
+
+        -- Customize the buttons
+        dashboard.section.buttons.val = {
+            dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
+            dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+            dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+            dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+            dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+            dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
+        }
+
+        -- Apply the custom dashboard configuration
+        alpha.setup(dashboard.config)
+    end
+}
+
+
+
+use 'lervag/vimtex'
 -- use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
 -- use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 -- use 'romgrk/barbar.nvim'

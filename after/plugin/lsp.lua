@@ -7,7 +7,8 @@ lsp.ensure_installed({
     'rust_analyzer',
     'jdtls',
     'jedi_language_server',
-    'jsonls'
+    'jsonls',
+    'rust_analyzer'
 })
 
 local cmp = require('cmp')

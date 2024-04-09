@@ -65,68 +65,76 @@
 
 -- vim.keymap.set("n","<S-Tab>",":bprev<CR>")
 -- Toggle project viewer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Toggle Project Viewer" })
+--
+--
+--
+-- Set the leader key to space
+vim.g.mapleader = " "
 
--- Move selected lines down
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move Selection Down" })
--- Move selected lines up
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move Selection Up" })
+-- Open the file explorer
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
 
--- Center screen after page down
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Page Down and Center" })
--- Center screen after page up
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Page Up and Center" })
--- Keep search matches in the middle of the window
-vim.keymap.set('n', 'n', 'nzzzv', { desc = "Next Search Result, Center" })
-vim.keymap.set('n', 'N', 'Nzzzv', { desc = "Previous Search Result, Center" })
+-- Move selected lines down/up in visual mode
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
--- Join lines without space adjustment
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join Lines Neatly" })
+-- Center the screen after scrolling down/up
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center screen" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center screen" })
 
--- Paste over without changing clipboard
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste Over Without Yank" })
+-- Center the screen after searching forward/backward
+vim.keymap.set('n', 'n', 'nzzzv', { desc = "Search forward and center screen" })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = "Search backward and center screen" })
 
--- Yank to clipboard
-vim.keymap.set("n", "<leader>y", "\"+y", { desc = "Yank to Clipboard" })
-vim.keymap.set("v", "<leader>y", "\"+y", { desc = "Yank Selection to Clipboard" })
-vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "Yank Line to Clipboard" })
--- Copy entire file to clipboard
-vim.keymap.set("n", "<leader>c", "maggVG\"+y`a", { desc = "Copy Entire File to Clipboard" })
+-- Join lines without moving the cursor
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 
--- Toggle Terminal
+-- Paste from system clipboard in visual mode
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste from system clipboard in visual mode" })
+
+-- Copy to system clipboard
+vim.keymap.set("n", "<leader>y", "\"+y", { desc = "Copy to system clipboard" })
+vim.keymap.set("v", "<leader>y", "\"+y", { desc = "Copy to system clipboard in visual mode" })
+vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "Copy line to system clipboard" })
+
+-- Copy entire buffer to system clipboard
+vim.keymap.set("n", "<leader>c", "maggVG\"+y`a", { desc = "Copy entire buffer to system clipboard" })
+
+-- Toggle terminal
 vim.keymap.set('n', '<C-`>', ':ToggleTerm<CR>', { desc = 'Toggle Terminal' })
--- Select All Text
+
+-- Select all text
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'Select All Text' })
 
--- Visual mode around brackets
-vim.keymap.set("n", "vm", "va{V", { desc = "Visual Mode Around Brackets" })
+-- Select surrounding {} block in visual mode
+vim.keymap.set("n", "vm", "va{V", { desc = "Select surrounding {} block in visual mode" })
 
--- Rename file
-vim.keymap.set('n', '<leader>n', ':let new_name=input("New filename: ") | silent execute "!mv % %:h/" . new_name | execute "e %:h/" . new_name<CR>', { desc = 'Rename Current File' })
+-- Rename current file
+vim.keymap.set('n', '<leader>n', ':let new_name=input("New filename: ") | silent execute "!mv % %:h/" . new_name | execute "e %:h/" . new_name<CR>', { desc = 'Rename current file' })
 
--- Telescope live grep
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope live_grep<CR>', { desc = 'Telescope Live Grep' })
+-- Live grep using Telescope
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope live_grep<CR>', { desc = 'Live grep using Telescope' })
 
--- Commenting
-vim.keymap.set("n", "<C-/>", ":normal Vgcc<CR>", { desc = "Comment Line" })
-vim.keymap.set("v", "<C-/>", ":normal Vgcc<CR>", { desc = "Comment Selection" })
+-- Comment/uncomment lines
+vim.keymap.set("n", "<C-/>", ":normal Vgcc<CR>", { desc = "Comment/uncomment lines in normal mode" })
+vim.keymap.set("v", "<C-/>", ":normal Vgcc<CR>", { desc = "Comment/uncomment lines in visual mode" })
 
--- NvimTree mappings
-vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Explorer" })
-vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle File Explorer on Current File" })
-vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse File Explorer" })
-vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh File Explorer" })
+-- Toggle file explorer
+vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
+vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
 
--- Copy to Clipboard
-vim.keymap.set({'v', 's'}, '<C-c>', '"+y', { desc = 'Copy to Clipboard' })
+-- Copy to system clipboard in visual and select mode
+vim.keymap.set({'v', 's'}, '<C-c>', '"+y', {desc = 'Copy to Clipboard'})
 
--- Disable Q
-vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Q" })
+-- Disable Ex mode
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
--- Open tmux sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open Tmux Sessionizer" })
+-- Open a new tmux window with tmux-sessionizer
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open new tmux window with tmux-sessionizer" })
 
--- Find and replace
+-- Replace all occurrences of the current word
 vim.keymap.set('n', '<leader>r', function()
     local find = vim.fn.input('Replace: ')
     if vim.fn.search(find, 'nw') == 0 then
@@ -135,17 +143,16 @@ vim.keymap.set('n', '<leader>r', function()
     end
     local replace = vim.fn.input('Replace: ' .. find .. ' with: ')
     vim.cmd('%s/' .. vim.fn.escape(find, '/') .. '/' .. vim.fn.escape(replace, '/') .. '/g')
-end, { desc = "Find and Replace" })
+end, { desc = 'Replace all occurrences of the current word' })
 
--- Set executable file
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make File Executable" })
+-- Make the current file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make the current file executable" })
 
 -- Toggle Copilot
 vim.keymap.set("n", "<C-S-c>", ":ToggleCopilot<CR>", { desc = "Toggle Copilot" })
 
--- Save file
-vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save File" })
+-- Save the current file
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save the current file" })
 
--- Previous buffer
-vim.keymap.set("n","<S-Tab>",":bprev<CR>", { desc = "Previous Buffer" })
-
+-- Switch to the previous buffer
+vim.keymap.set("n","<S-Tab>",":bprev<CR>", { desc = "Switch to the previous buffer" })

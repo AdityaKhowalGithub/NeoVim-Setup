@@ -1,80 +1,6 @@
 
 
--- require('catppuccin').setup({
-    -- flavor = 'frappe',
-    -- transparent_background = true,
--- })
 
--- function Theme(color)
-    -- color = color or "catppuccin"
-    -- vim.cmd.colorscheme(color)
-    -- vim.cmd('highlight ColorColumn ctermbg=10 guibg=#5b95b5')
--- end
-
--- Theme()
-
-
--- require("catppuccin").setup({
-    -- flavour = "latte", -- latte, frappe, macchiato, mocha
-    -- flavour = "auto" -- will respect terminal's background
-    -- background = { -- :h background
-        -- light = "latte",
-        -- dark = "mocha",
-    -- },
-    -- transparent_background = false, -- disables setting the background color.
-    -- show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    -- term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    -- dim_inactive = {
-        -- enabled = false, -- dims the background color of inactive window
-        -- shade = "light",
-        -- percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    -- },
-    -- no_italic = false, -- Force no italic
-    -- no_bold = false, -- Force no bold
-    -- no_underline = false, -- Force no underline
-    -- styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        -- comments = { "italic" }, -- Change the style of comments
-        -- conditionals = { "italic" },
-        -- loops = {},
-        -- functions = {},
-        -- keywords = {},
-        -- strings = {},
-        -- variables = {},
-        -- numbers = {},
-        -- booleans = {},
-        -- properties = {},
-        -- types = {},
-        -- operators = {},
-        -- miscs = {}, -- Uncomment to turn off hard-coded styles
-    -- },
-    -- color_overrides = {
-        -- latte={
-            -- base = "#e9edc9",
-            -- mantle = "#fefae0",
-            -- crust = "#d4a373",
-        -- }
-    -- },
-    -- custom_highlights = {
-        -- Normal = { fg = "#bc6c25" }, -- Darker text for normal text
-    -- },
-    -- default_integrations = true,
-    -- integrations = {
-        -- cmp = true,
-        -- gitsigns = true,
-        -- nvimtree = true,
-        -- treesitter = true,
-        -- notify = true,
-        -- mini = {
-            -- enabled = true,
-            -- indentscope_color = "",
-        -- },
-
-    -- },
--- })
-
-
--- vim.cmd.colorscheme "catppuccin"
---
 --
 function ToggleCatppuccinMode()
     -- Get the current background setting from Neovim
@@ -85,6 +11,7 @@ function ToggleCatppuccinMode()
 
     -- Set the new background in Neovim
     vim.o.background = new_mode
+end 
 
 require("catppuccin").setup({
             background = {
@@ -438,7 +365,5 @@ require("catppuccin").setup({
         
 vim.cmd.colorscheme "catppuccin"
 
-end
-
--- Map the function to a convenient keybinding, e.g., <Leader>tm
 vim.api.nvim_set_keymap("n", "<Leader>tm", ":lua ToggleCatppuccinMode()<CR>", { noremap = true, silent = true })
+

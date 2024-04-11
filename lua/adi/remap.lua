@@ -162,3 +162,10 @@ vim.keymap.set("n","<S-Tab>",":bprev<CR>", { desc = "Switch to the previous buff
 -- -- Clear search highlighting with Escape
 vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear search highlighting" })
 
+
+vim.keymap.set("n", "<leader>gg", function()
+  local message = vim.fn.input("Enter message: ")
+  vim.cmd(string.format(':!lzgit "%s"', message))
+end, { desc = "Execute lzgit with a message" })
+
+

@@ -121,7 +121,7 @@ vim.keymap.set("v", "<C-/>", ":normal Vgcc<CR>", { desc = "Comment/uncomment lin
 
 -- Toggle file explorer
 vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "file explorer on current file" })
 vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
 vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
 
@@ -156,3 +156,9 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save the current file" })
 
 -- Switch to the previous buffer
 vim.keymap.set("n","<S-Tab>",":bprev<CR>", { desc = "Switch to the previous buffer" })
+
+-- vim.keymap.set("n","<S-W","")
+--
+-- -- Clear search highlighting with Escape
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear search highlighting" })
+

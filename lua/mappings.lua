@@ -18,7 +18,8 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to n
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
-
+map("n", "gs", "<cmd>ObsidianSearch<CR>", {desc = "Obsidian Search"})
+map("n", "gb", "<cmd>ObsidianBacklinks<CR>", {desc = "Obsidian Back links"})
 map({'v', 's'}, '<C-c>', '"+y', {desc = 'Copy to Clipboard'})-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map("n", "<leader>c", "maggVG\"+y`a")

@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-	theme = "dark_horizon",
+	theme = "ayu_light",
   telescope = {style = "bordered"},
   nvdash = {
     load_on_startup = true,

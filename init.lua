@@ -11,13 +11,21 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.opt.conceallevel = 1
-local function open_nvim_tree()
 
-  -- open the tree
-  vim.cmd("Nvdash")
-  require("nvim-tree.api").tree.open()
+
+
+local function open_nvim_tree()
+  -- Check if Neovim was started without file arguments
+  if #vim.fn.argv() == 0 then
+    -- open the tree
+    vim.cmd("Nvdash")
+    require("nvim-tree.api").tree.open()
+  end
 end
+
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
 local lazy_config = require "configs.lazy"
 
 -- load plugins

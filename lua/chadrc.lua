@@ -8,8 +8,9 @@ local M = {}
 
 
 M.ui = {
-	theme = "catppuccin",
+	theme = "wombat",
   telescope = {style = "bordered"},
+  transparency = true,
   nvdash = {
     load_on_startup = true,
 
